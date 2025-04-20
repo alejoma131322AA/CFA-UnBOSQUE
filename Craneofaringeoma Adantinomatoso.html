@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craneofaringeoma Adantinomatoso - Universidad El Bosque</title>
+    <style>
+        :root {
+            --primary-color: #1f8700de; /* Color institucional Universidad El Bosque */
+            --secondary-color: #e6f2f8;
+            --accent-color: #ff6b35;
+            --text-color: #333;
+            --light-text: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f5eee8; /* Fondo verde claro */
+            color: var(--text-color);
+            transition: margin-left 0.5s;
+        }
+        
+        /* Menú lateral */
+        #sidebar {
+            width: 250px;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            height: 100vh;
+            position: fixed;
+            z-index: 1000;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .sidebar-header img {
+            width: 40px;
+            height: auto;
+        }
+        
+        #toggle-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar-menu li {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s;
+        }
+        
+        .sidebar-menu li:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar-menu a {
+            color: var(--light-text);
+            text-decoration: none;
+            display: block;
+        }
+        
+        /* Contenido principal */
+        #main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--light-text);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .university-logo {
+            height: 60px;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .histological-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        section {
+            background-color: var(--light-text);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .ai-tools {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .ai-tool {
+            background-color: var(--secondary-color);
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .ai-tool:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ai-tool h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .ai-tool a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .motivation-section {
+            background-color: var(--secondary-color);
+            border-left: 5px solid var(--accent-color);
+        }
+        
+        .motivation-quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin: 15px 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border-radius: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            #sidebar {
+                transform: translateX(-250px);
+            }
+            
+            #sidebar.visible {
+                transform: translateX(0);
+            }
+            
+            #main-content {
+                margin-left: 0;
+                padding: 15px;
+            }
+            
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .university-logo {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Menú lateral - Siempre visible -->
+    <aside id="sidebar" class="visible">
+        <div class="sidebar-header">
+            <img src="c:\Users\Jorge Monrroy\Desktop\JORGELMD\A-Desktop-JLMD\AA.JORGELMD\HISTOLOGIA UnBOSQUE\INTERDISCIPLINAR-5-HTLM\IMÁGENES\Logo2 UnBOSQUE.PNG.JPG" alt="">
+            <button id="toggle-btn">×</button>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#introduccion">Introducción</a></li>
+            <li><a href="#conceptos">Conceptos Básicos</a></li>
+            <li><a href="#lesion-celular">Lesión Celular</a></li>
+            <li><a href="#cambios">Cambios Estructurales y Funcionales</a></li>
+            <li><a href="#muerte-celular">Procesos de Muerte Celular</a></li>
+            <li><a href="#senalizacion">Señalización</a></li>
+            <li><a href="#respuestas">Respuestas Adaptativas</a></li>
+            <li><a href="#ayuda">Ayuda a Pacientes</a></li>
+            <li><a href="#ia">Herramientas de IA</a></li>
+        </ul>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main id="main-content">
+        <header>
+            <div>
+                <h1>Craneofaringeoma Adantinomatoso</h1>
+                <p>Patología, mecanismos moleculares y apoyo al paciente</p>
+            </div>
+            <img src="c:\Users\Jorge Monrroy\Desktop\JORGELMD\A-Desktop-JLMD\AA.JORGELMD\HISTOLOGIA UnBOSQUE\O LOGO\Diapositiva1.PNG" alt="Universidad El Bosque" class="university-logo">
+        </header>
+
+        <img src="c:\Users\Jorge Monrroy\Desktop\JORGELMD\A-Desktop-JLMD\AA.JORGELMD\HISTOLOGIA UnBOSQUE\INTERDISCIPLINAR-5-HTLM\IMÁGENES\CF.PNG.JPG" alt="Imagen histológica de craneofaringeoma adantinomatoso" class="histological-image">
+
+        <section id="introduccion">
+            <h2>Introducción</h2>
+            <p>El craneofaringeoma adantinomatoso es un tumor cerebral poco frecuente, de crecimiento lento, que se desarrolla cerca de la glándula pituitaria en la base del cerebro. Aunque histológicamente benigno, su localización lo hace clínicamente agresivo, con potencial para causar importantes déficits neurológicos y endocrinos.</p>
+            <p>Este tumor representa aproximadamente el 1-3% de todos los tumores intracraneales y es más común en niños, aunque puede presentarse a cualquier edad. Su comportamiento biológico y las opciones terapéuticas presentan desafíos únicos para los profesionales de la salud.</p>
+        </section>
+
+        <section id="conceptos">
+            <h2>Conceptos Básicos</h2>
+            <p>El craneofaringeoma adantinomatoso es un tumor epitelial benigno que se origina de restos embriológicos de la bolsa de Rathke, una estructura embrionaria que da lugar a partes de la glándula pituitaria.</p>
+            <p>Características clave:</p>
+            <ul>
+                <li>Localización: región selar y supraselar</li>
+                <li>Componente sólido y quístico</li>
+                <li>Contenido quístico rico en colesterol y cristales</li>
+                <li>Patrón histológico de epitelio estratificado con periferia en empalizada</li>
+                <li>Expresión de β-catenina nuclear (asociado a mutaciones en CTNNB1)</li>
+            </ul>
+        </section>
+
+        <section id="lesion-celular">
+            <h2>Lesión Celular</h2>
+            <p>En el craneofaringeoma adantinomatoso, las células tumorales presentan alteraciones características:</p>
+            <p><strong>Alteraciones morfológicas:</strong> Las células epiteliales muestran disposición en empalizada en la periferia de los nidos tumorales, con núcleos ovalados y citoplasma eosinófilo. Las células centrales muestran degeneración hidrópica y acumulación de queratina.</p>
+            <p><strong>Alteraciones metabólicas:</strong> Las células tumorales presentan alteraciones en la vía WNT/β-catenina, con acumulación nuclear de β-catenina debido a mutaciones en el gen CTNNB1. Esto conduce a una proliferación celular desregulada.</p>
+        </section>
+
+        <section id="cambios">
+            <h2>Cambios Estructurales y Funcionales</h2>
+            <p>El crecimiento del tumor produce importantes cambios estructurales y funcionales:</p>
+            <p><strong>Efectos locales:</strong> Compresión del quiasma óptico (déficit visual), hipotálamo (alteraciones endocrinas y del comportamiento), tercer ventrículo (hidrocefalia) y estructuras vasculares.</p>
+            <p><strong>Cambios endocrinos:</strong> Deficiencia de hormona de crecimiento (75%), hipotiroidismo (40%), insuficiencia suprarrenal (25%) y diabetes insípida (20%).</p>
+            <p><strong>Inflamación peritumoral:</strong> Reacción inflamatoria crónica con infiltrado linfocítico que puede contribuir a la fibrosis y adherencias.</p>
+        </section>
+
+        <section id="muerte-celular">
+            <h2>Procesos de Muerte Celular</h2>
+            <p>En el craneofaringeoma adantinomatoso se observan diferentes patrones de muerte celular:</p>
+            <p><strong>Necrosis:</strong> Áreas centrales de los nidos tumorales muestran necrosis coagulativa con acumulación de queratina ("wet keratin"), un hallazgo característico.</p>
+            <p><strong>Apoptosis:</strong> Aunque menos frecuente, se observa apoptosis en algunas células tumorales, posiblemente mediada por vías intrínsecas ante estrés metabólico.</p>
+            <p><strong>Autofagia:</strong> Estudios recientes sugieren activación de procesos autofágicos como mecanismo de supervivencia celular en condiciones de hipoxia y limitación nutricional.</p>
+        </section>
+
+        <section id="senalizacion">
+            <h2>Señalización Molecular</h2>
+            <p>Las principales vías de señalización alteradas en este tumor incluyen:</p>
+            <p><strong>Vía WNT/β-catenina:</strong> Mutaciones en CTNNB1 (90% de casos) llevan a β-catenina nuclear que activa transcripción de genes proliferativos.</p>
+            <p><strong>Vía EGFR:</strong> Sobreexpresión de EGFR y sus ligandos contribuye a proliferación y supervivencia celular.</p>
+            <p><strong>Vías inflamatorias:</strong> Elevación de IL-6, IL-1β y otras citoquinas proinflamatorias en el microambiente tumoral.</p>
+            <p><strong>Vasculogénesis:</strong> Expresión de VEGF contribuye a la vascularización tumoral aunque menos marcada que en otros tumores cerebrales.</p>
+        </section>
+
+        <section id="respuestas">
+            <h2>Respuestas Adaptativas</h2>
+            <p>Las células del craneofaringeoma desarrollan diversas respuestas adaptativas:</p>
+            <p><strong>Adaptación a hipoxia:</strong> Expresión de HIF-1α en áreas mal vascularizadas, con posterior activación de genes relacionados con angiogénesis y metabolismo anaeróbico.</p>
+            <p><strong>Resistencia a apoptosis:</strong> Regulación al alza de proteínas anti-apoptóticas como Bcl-2 y survivina.</p>
+            <p><strong>Interacción microambiente:</strong> Secreción de factores que modifican el microambiente peritumoral, promoviendo fibrosis y reduciendo la efectividad de terapias.</p>
+        </section>
+
+        <section id="ayuda">
+            <h2>Ayuda a los Pacientes</h2>
+            <div class="motivation-section">
+                <p class="motivation-quote">"Cada paso en la comprensión de esta enfermedad es un paso hacia mejores tratamientos y calidad de vida para los pacientes."</p>
+            </div>
+            <p><strong>Apoyo multidisciplinario:</strong> Los pacientes con craneofaringeoma requieren seguimiento por neurocirujanos, endocrinólogos, oftalmólogos y psicólogos.</p>
+            <p><strong>Terapia de reemplazo hormonal:</strong> Esencial para manejar las deficiencias endocrinas secundarias al tumor o su tratamiento.</p>
+            <p><strong>Apoyo nutricional:</strong> Muchos pacientes desarrollan obesidad hipotalámica que requiere manejo especializado.</p>
+            <p><strong>Grupos de apoyo:</strong> Conexión con otros pacientes y familias puede proporcionar valioso apoyo emocional y práctico.</p>
+        </section>
+
+        <section id="ia">
+            <h2>Herramientas de Inteligencia Artificial</h2>
+            <p>Las siguientes herramientas de IA pueden ser útiles para investigación, educación y apoyo en craneofaringeoma:</p>
+            
+            <div class="ai-tools">
+                <div class="ai-tool">
+                    <h3>Generación de Texto</h3>
+                    <p>ChatGPT, Claude, Gemini - Para resumir artículos, generar explicaciones pacientes o crear contenido educativo.</p>
+                    <a href="https://chat.openai.com" target="_blank">Probar ChatGPT</a>
+                </div>
+                
+                <div class="ai-tool">
+                    <h3>Generación de Imágenes</h3>
+                    <p>DALL-E, Midjourney - Para crear ilustraciones médicas o diagramas explicativos del tumor.</p>
+                    <a href="https://openai.com/dall-e" target="_blank">Probar DALL-E</a>
+                </div>
+                
+                <div class="ai-tool">
+                    <h3>Análisis de Investigación</h3>
+                    <p>Elicit, Consensus - Para revisión sistemática de literatura médica sobre el tema.</p>
+                    <a href="https://elicit.org" target="_blank">Probar Elicit</a>
+                </div>
+                
+                <div class="ai-tool">
+                    <h3>Asistente Médico</h3>
+                    <p>IBM Watson Health - Para apoyo en decisiones clínicas basadas en evidencia.</p>
+                    <a href="https://www.ibm.com/watson-health" target="_blank">Visitar Watson Health</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Universidad El Bosque - Facultad de Medicina</p>
+            <p>Morfofisiolagía I - 2025-1</p>
+            <p>Contacto: histologia32025-1@unbosque.edu.co</p>
+        </footer>
+    </main>
+
+    <script>
+        // Funcionalidad para ocultar/mostrar el menú lateral en móviles
+        document.getElementById('toggle-btn').addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.toggle('visible');
+            }
+        });
+        
+        // Cerrar menú al hacer clic en un enlace (útil en móviles)
+        document.querySelectorAll('.sidebar-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.remove('visible');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
